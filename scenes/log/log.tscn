@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://xdhqr14ulu2l"]
+
+[ext_resource type="Texture2D" uid="uid://c6iorr0ajhcue" path="res://assets/log.aseprite" id="1_ojgge"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_w5gfq"]
+radius = 5.0
+
+[node name="Log" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_ojgge")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -5)
+shape = SubResource("CircleShape2D_w5gfq")

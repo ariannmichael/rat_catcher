@@ -2,7 +2,6 @@ class_name Player extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
-
 var direction := Vector2.DOWN
 var input := Vector2.ZERO
 
@@ -42,7 +41,8 @@ func set_direction() -> bool:
 
 
 func update_animator(state: String) -> void:
-	animated_sprite_2d.play(state + "_" + anim_direction())
+	if animated_sprite_2d:
+		animated_sprite_2d.play(state + "_" + anim_direction())
 
 
 func anim_direction() -> String:
