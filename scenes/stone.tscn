@@ -1,0 +1,16 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1mcfa8j6etup"]
+
+[ext_resource type="Texture2D" uid="uid://log4h4u4cngc" path="res://assets/stone.aseprite" id="1_aeuaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_877if"]
+radius = 5.0
+
+[node name="Stone" type="StaticBody2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -4)
+texture = ExtResource("1_aeuaf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_877if")

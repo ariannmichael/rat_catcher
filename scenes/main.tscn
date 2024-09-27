@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bcprl8mjvasow"]
+
+[ext_resource type="PackedScene" uid="uid://de7gv0w742j5s" path="res://scenes/rat.tscn" id="2_32f2i"]
+
+[node name="Main" type="Node"]
+
+[node name="Rat" parent="." instance=ExtResource("2_32f2i")]
+position = Vector2(182, 93)

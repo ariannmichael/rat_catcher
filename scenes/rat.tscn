@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://de7gv0w742j5s"]
+
+[ext_resource type="Texture2D" uid="uid://cgnnfohht7gwd" path="res://assets/rat.aseprite" id="1_75inf"]
+[ext_resource type="Script" path="res://scenes/rat.gd" id="1_sf5mc"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcvtu"]
+radius = 4.0
+
+[node name="Rat" type="CharacterBody2D"]
+script = ExtResource("1_sf5mc")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(8, 8)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_75inf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_wcvtu")
