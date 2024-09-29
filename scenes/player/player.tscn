@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://bdah1j0tp47ai"]
+[gd_scene load_steps=16 format=3 uid="uid://bdah1j0tp47ai"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1r1j1"]
 [ext_resource type="Texture2D" uid="uid://b3dcb00i32yma" path="res://assets/character_down.aseprite" id="1_ylyqg"]
@@ -56,9 +56,12 @@ radius = 5.0
 [sub_resource type="CircleShape2D" id="CircleShape2D_p44ak"]
 radius = 6.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_phmld"]
+radius = 9.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 8
+collision_mask = 264
 script = ExtResource("1_1r1j1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -89,6 +92,15 @@ collision_mask = 20
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_p44ak")
+
+[node name="LevelArea" type="Area2D" parent="."]
+collision_layer = 1536
+collision_mask = 1536
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
+position = Vector2(0, -6)
+shape = SubResource("CircleShape2D_phmld")
+debug_color = Color(0.720103, 0.309434, 0.912944, 0.42)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_wnlv0")

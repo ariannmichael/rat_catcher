@@ -4,16 +4,22 @@ extends Node
 
 var current_index_level := 0
 
+
 func change_level(level_index: int) -> void:
 	current_index_level = level_index
-	if current_index_level >= level_scenes.size():
+	if current_index_level >= level_scenes.size() or current_index_level <= 0:
 		current_index_level = 0
 	
 	call_deferred("update_scene")
 	
 
 func increment_level() -> void:
+	print("Increment Level")
 	change_level(current_index_level + 1)
+
+
+func decrement_level() -> void:
+	change_level(current_index_level - 1)
 
 
 func update_scene() -> void:

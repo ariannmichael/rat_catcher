@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://xtv10vi0kqv7"]
+
+[ext_resource type="PackedScene" uid="uid://dix800khrwvi4" path="res://levels/base_level.tscn" id="1_na7gl"]
+
+[node name="Level002" instance=ExtResource("1_na7gl")]
+
+[node name="Player" parent="." index="1"]
+position = Vector2(114, 28)
+
+[node name="NextLevelArea" parent="." index="4"]
+visible = false

@@ -5,24 +5,24 @@
 [ext_resource type="PackedScene" uid="uid://bum6r68qhslca" path="res://scenes/brick/brick.tscn" id="3_42e5d"]
 [ext_resource type="PackedScene" uid="uid://c1mcfa8j6etup" path="res://scenes/stone/stone.tscn" id="4_oljp8"]
 
-[node name="BaseLevel" instance=ExtResource("1_hk86p")]
+[node name="Level001" instance=ExtResource("1_hk86p")]
 
-[node name="Player" parent="." index="0"]
+[node name="Player" parent="." index="1"]
 position = Vector2(127, 87)
 
-[node name="Ground" parent="." index="1"]
+[node name="Ground" parent="." index="2"]
 tile_map_data = PackedByteArray("AAADAAQAAQADAAMAAAADAAMAAQADAAAAAAAPAAIAAQADAAMAAAAPAAEAAQADAAAAAAAOAAIAAQAAAAMAAAAOAAEAAQAAAAAAAAAMAAgAAQADAAMAAAAMAAcAAQADAAAAAAALAAgAAQAAAAMAAAALAAcAAQAAAAAAAAACAAQAAQAAAAMAAAACAAMAAQAAAAAAAAA=")
 
-[node name="BackLevelArea" parent="." index="2"]
+[node name="BackLevelArea" parent="." index="3"]
 visible = false
 
-[node name="NextLevelArea" parent="." index="3"]
+[node name="NextLevelArea" parent="." index="4"]
 position = Vector2(135, 22)
 
-[node name="Rat" parent="Animals" index="0" instance=ExtResource("2_wl846")]
+[node name="Rat" parent="Rats" index="0" instance=ExtResource("2_wl846")]
 position = Vector2(264, 76)
 
-[node name="Rat2" parent="Animals" index="1" instance=ExtResource("2_wl846")]
+[node name="Rat2" parent="Rats" index="1" instance=ExtResource("2_wl846")]
 position = Vector2(48, 95)
 
 [node name="Brick" parent="Blocks" index="0" instance=ExtResource("3_42e5d")]
