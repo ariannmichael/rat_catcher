@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://s7xjro4fnn2g"]
+
+[ext_resource type="Texture2D" uid="uid://pe2fiyn62sr1" path="res://assets/stair-up.aseprite" id="1_sg407"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_550h5"]
+size = Vector2(16, 16)
+
+[node name="NextLevelArea" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_sg407")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_550h5")

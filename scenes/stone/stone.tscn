@@ -1,13 +1,16 @@
 [gd_scene load_steps=3 format=3 uid="uid://c1mcfa8j6etup"]
 
-[ext_resource type="Texture2D" uid="uid://log4h4u4cngc" path="res://assets/stone.aseprite" id="1_dd173"]
+[ext_resource type="Texture2D" uid="uid://cb8i1rk50747j" path="res://assets/stone.aseprite" id="1_dd173"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_877if"]
 radius = 5.0
 
 [node name="Stone" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.521569)
 position = Vector2(0, -4)
 texture = ExtResource("1_dd173")
 

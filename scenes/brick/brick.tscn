@@ -1,15 +1,18 @@
 [gd_scene load_steps=3 format=3 uid="uid://bum6r68qhslca"]
 
-[ext_resource type="Texture2D" uid="uid://cqkacnyi88l42" path="res://assets/Sprite-0011.aseprite" id="1_oqduo"]
+[ext_resource type="Texture2D" uid="uid://cp3psjwo3apmg" path="res://assets/block.aseprite" id="1_xo5gs"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ss3j0"]
 size = Vector2(16, 16)
 
 [node name="Brick" type="StaticBody2D"]
+collision_layer = 8
+collision_mask = 0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0.843137)
 position = Vector2(0, -8)
-texture = ExtResource("1_oqduo")
+texture = ExtResource("1_xo5gs")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)

@@ -1,14 +1,16 @@
-[gd_scene load_steps=12 format=3 uid="uid://bdah1j0tp47ai"]
+[gd_scene load_steps=15 format=3 uid="uid://bdah1j0tp47ai"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1r1j1"]
-[ext_resource type="Texture2D" uid="uid://covu4a6qxkq7t" path="res://assets/character_down.aseprite" id="1_ylyqg"]
-[ext_resource type="Texture2D" uid="uid://cmgjckdml8xne" path="res://assets/character_down_walk_1.aseprite" id="2_gtw6n"]
-[ext_resource type="Texture2D" uid="uid://b62ikofvvrclt" path="res://assets/character_side.aseprite" id="2_hqdl1"]
-[ext_resource type="Texture2D" uid="uid://bncke7bh2yssp" path="res://assets/character_down_walk_2.aseprite" id="3_h60v0"]
-[ext_resource type="Texture2D" uid="uid://c4xmi2aeoanox" path="res://assets/character_up.aseprite" id="3_w1kye"]
+[ext_resource type="Texture2D" uid="uid://b3dcb00i32yma" path="res://assets/character_down.aseprite" id="1_ylyqg"]
+[ext_resource type="Texture2D" uid="uid://x5cwq4mdtujh" path="res://assets/character_down_walk_1.aseprite" id="2_gtw6n"]
+[ext_resource type="Texture2D" uid="uid://bk5kdw8jthu1v" path="res://assets/character_side.aseprite" id="2_hqdl1"]
+[ext_resource type="Script" path="res://scenes/game_camera.gd" id="2_sfdv1"]
+[ext_resource type="Texture2D" uid="uid://owwusya41mrg" path="res://assets/character_down_walk_2.aseprite" id="3_h60v0"]
+[ext_resource type="Texture2D" uid="uid://cxdim7ixblj75" path="res://assets/character_up.aseprite" id="3_w1kye"]
 [ext_resource type="Script" path="res://scenes/player/player_idle.gd" id="7_jlw13"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="7_wnlv0"]
 [ext_resource type="Script" path="res://scenes/player/player_walk.gd" id="8_8h2o3"]
+[ext_resource type="Texture2D" uid="uid://bawny6b3mi5vg" path="res://assets/shadown.aseprite" id="8_hxo7p"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xhx1"]
 animations = [{
@@ -51,21 +53,42 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_b4dnd"]
 radius = 5.0
 
-[node name="Player" type="CharacterBody2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_p44ak"]
+radius = 6.0
+
+[node name="Player" type="CharacterBody2D" groups=["Player"]]
+collision_layer = 2
+collision_mask = 8
 script = ExtResource("1_1r1j1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(8, 8)
+script = ExtResource("2_sfdv1")
+background_color = Color(0.0361009, 0.0361009, 0.0361009, 1)
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+z_index = 100
 position = Vector2(0, -8)
 sprite_frames = SubResource("SpriteFrames_5xhx1")
 animation = &"idle_down"
 autoplay = "idle_down"
 
+[node name="Shadow" type="Sprite2D" parent="AnimatedSprite2D"]
+show_behind_parent = true
+position = Vector2(0, 8)
+texture = ExtResource("8_hxo7p")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_b4dnd")
+
+[node name="HazardArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 20
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_p44ak")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_wnlv0")
@@ -78,3 +101,5 @@ player = NodePath("../..")
 [node name="Walk" type="Node" parent="StateMachine" node_paths=PackedStringArray("player")]
 script = ExtResource("8_8h2o3")
 player = NodePath("../..")
+
+[connection signal="area_entered" from="HazardArea" to="." method="_on_hazard_area_area_entered"]

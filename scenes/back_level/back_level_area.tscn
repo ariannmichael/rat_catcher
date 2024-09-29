@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b5kwemu7x4wyy"]
+
+[ext_resource type="Texture2D" uid="uid://b3ko8opy1pioo" path="res://assets/stair-down.aseprite" id="1_p5s03"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kpspn"]
+size = Vector2(16, 16)
+
+[node name="BackLevelArea" type="Area2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_p5s03")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_kpspn")

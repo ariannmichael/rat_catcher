@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cqkacnyi88l42"
-path="res://.godot/imported/Sprite-0011.aseprite-864548a06373c059f9bee42eb43e7d53.ctex"
+uid="uid://bke65s6jsyhop"
+path="res://.godot/imported/treasure.aseprite-09387d67aa94eff4d99ca7c00f1a9387.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/Sprite-0011.aseprite"
-dest_files=["res://.godot/imported/Sprite-0011.aseprite-864548a06373c059f9bee42eb43e7d53.ctex"]
+source_file="res://assets/treasure.aseprite"
+dest_files=["res://.godot/imported/treasure.aseprite-09387d67aa94eff4d99ca7c00f1a9387.ctex"]
 
 [params]
 

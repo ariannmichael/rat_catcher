@@ -1,5 +1,7 @@
 class_name Player extends CharacterBody2D
 
+signal died
+
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction := Vector2.DOWN
@@ -40,9 +42,10 @@ func set_direction() -> bool:
 	return true
 
 
-func update_animator(state: String) -> void:
+func update_animator(_state: String) -> void:
 	if animated_sprite_2d:
-		animated_sprite_2d.play(state + "_" + anim_direction())
+		return
+		#animated_sprite_2d.play(state + "_" + anim_direction())
 
 
 func anim_direction() -> String:
@@ -52,3 +55,7 @@ func anim_direction() -> String:
 		return "down"
 	else:
 		return "side"
+
+
+func _on_hazard_area_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

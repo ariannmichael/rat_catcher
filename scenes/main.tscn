@@ -1,12 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://bcprl8mjvasow"]
+[gd_scene load_steps=2 format=3 uid="uid://bcprl8mjvasow"]
 
-[ext_resource type="PackedScene" uid="uid://de7gv0w742j5s" path="res://scenes/rat/rat.tscn" id="2_32f2i"]
-[ext_resource type="PackedScene" uid="uid://bdah1j0tp47ai" path="res://scenes/player/player.tscn" id="2_uqupm"]
+[ext_resource type="Script" path="res://scenes/main.gd" id="1_qj3ru"]
 
 [node name="Main" type="Node"]
-
-[node name="Rat" parent="." instance=ExtResource("2_32f2i")]
-position = Vector2(182, 93)
-
-[node name="Player" parent="." instance=ExtResource("2_uqupm")]
-position = Vector2(113, 83)
+script = ExtResource("1_qj3ru")
