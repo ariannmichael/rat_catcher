@@ -6,8 +6,6 @@
 [ext_resource type="FontFile" uid="uid://d3ubcvnwj0iif" path="res://resources/BitPotion_outline.ttf" id="3_pixsq"]
 
 [node name="LevelUI" type="CanvasLayer"]
-scale = Vector2(4, 4)
-transform = Transform2D(4, 0, 0, 4, 0, 0)
 script = ExtResource("1_tj1gr")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]

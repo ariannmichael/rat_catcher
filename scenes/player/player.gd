@@ -1,5 +1,6 @@
 class_name Player extends CharacterBody2D
 
+@warning_ignore("unused_signal")
 signal died
 
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -57,5 +58,5 @@ func anim_direction() -> String:
 		return "side"
 
 
-func _on_hazard_area_area_entered(area: Area2D) -> void:
+func _on_hazard_area_area_entered(_area: Area2D) -> void:
 	pass # Replace with function body.
