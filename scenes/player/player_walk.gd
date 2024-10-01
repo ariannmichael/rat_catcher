@@ -16,3 +16,8 @@ func update(_delta) -> void:
 	
 	if player.set_direction():
 		player.update_animator("walk")
+
+
+func handle_input(_event: InputEvent) -> void:
+	if _event.is_action_pressed("attack"):
+		_transitioned.emit(self, "attack")

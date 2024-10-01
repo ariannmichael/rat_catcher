@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 signal died
 
-@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
 
 var direction := Vector2.DOWN
 var input := Vector2.ZERO
@@ -39,13 +39,13 @@ func set_direction() -> bool:
 		return false
 	
 	direction = new_direction
+	sprite.scale.x = 1 if direction == Vector2.LEFT else -1
 	return true
 
 
-func update_animator(_state: String) -> void:
-	if animated_sprite_2d:
-		return
-		#animated_sprite_2d.play(state + "_" + anim_direction())
+func update_animator(state: String) -> void:
+	if sprite:
+		sprite.play(state + "_" + anim_direction())
 
 
 func anim_direction() -> String:
