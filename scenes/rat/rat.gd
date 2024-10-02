@@ -1,27 +1,17 @@
 class_name Rat extends CharacterBody2D
 
-@export var move_speed := 10
-
-var move_direction: Vector2
-var wander_time: float
-
-
-func _ready() -> void:
-	randomize_wander()
-
-
-func _process(delta: float) -> void:
-	if wander_time > 0:
-		wander_time -= delta
-	else:
-		randomize_wander()
+@onready var sprite_2d: Sprite2D = $Sprite2D
 
 
 func _physics_process(_delta: float) -> void:
-	velocity = move_direction * move_speed
 	move_and_slide()
+	
+	if velocity.x < 0:
+		sprite_2d.flip_h = true
+	else:
+		sprite_2d.flip_h = false
+		
 
 
-func randomize_wander() -> void:
-	move_direction = Vector2(randf_range(-1, 1), randf_range(-1, 1)).normalized()
-	wander_time = randf_range(1, 3)
+func _on_hurt_box_area_entered(area: Area2D) -> void:
+	pass # Replace with function body.

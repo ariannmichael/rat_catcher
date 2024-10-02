@@ -1,12 +1,17 @@
-[gd_scene load_steps=6 format=3 uid="uid://de7gv0w742j5s"]
+[gd_scene load_steps=9 format=3 uid="uid://de7gv0w742j5s"]
 
 [ext_resource type="Texture2D" uid="uid://b7xcy52ollhp0" path="res://assets/rat.aseprite" id="1_75inf"]
 [ext_resource type="Script" path="res://scenes/rat/rat.gd" id="1_sf5mc"]
 [ext_resource type="Script" path="res://scripts/state_machine.gd" id="3_5ywke"]
 [ext_resource type="Texture2D" uid="uid://bawny6b3mi5vg" path="res://assets/shadown.aseprite" id="3_ih58d"]
+[ext_resource type="Script" path="res://scenes/rat/rat_wander.gd" id="5_bbm34"]
+[ext_resource type="Script" path="res://scenes/rat/rat_follow.gd" id="6_y55db"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcvtu"]
 radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4se2b"]
+radius = 8.0
 
 [node name="Rat" type="CharacterBody2D" groups=["Rat"]]
 collision_layer = 4
@@ -26,9 +31,24 @@ texture = ExtResource("3_ih58d")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_wcvtu")
 
-[node name="StateMachine" type="Node" parent="."]
+[node name="HurtBox" type="Area2D" parent="."]
+position = Vector2(0, -4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HurtBox"]
+position = Vector2(-1, 0)
+shape = SubResource("CircleShape2D_4se2b")
+debug_color = Color(0.969022, 0.219493, 0.375381, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_5ywke")
+initial_state = NodePath("Wander")
 
-[node name="Wander" type="Node" parent="StateMachine"]
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_bbm34")
+enemy = NodePath("../..")
 
-[node name="Follow" type="Node" parent="StateMachine"]
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_y55db")
+enemy = NodePath("../..")
+
+[connection signal="area_entered" from="HurtBox" to="." method="_on_hurt_box_area_entered"]

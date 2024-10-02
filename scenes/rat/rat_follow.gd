@@ -1,11 +1,25 @@
-extends Node
+class_name RatFollow extends State
+
+@export var enemy: Rat
+@export var move_speed := 10.0
+
+var player: Player
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
+func enter() -> void:
+	player = get_tree().get_first_node_in_group("Player")
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func physics_update(_delta) -> void:
+	if !player:
+		return
+	
+	var direction = player.global_position - enemy.global_position
+	
+	if direction.length() > 10:
+		enemy.velocity = direction.normalized() * move_speed
+	else:
+		enemy.velocity = Vector2()
+	
+	if direction.length() > 50:
+		_transitioned.emit(self, "wander")
