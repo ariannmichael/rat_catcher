@@ -1,0 +1,50 @@
+[gd_scene load_steps=7 format=3 uid="uid://25e270pyju1d"]
+
+[ext_resource type="Texture2D" uid="uid://vugqyu75vsot" path="res://assets/button.aseprite" id="1_56x8a"]
+[ext_resource type="Script" path="res://scenes/button/button.gd" id="1_ou57d"]
+[ext_resource type="Texture2D" uid="uid://uebxinr6fyld" path="res://assets/button2.aseprite" id="2_uuted"]
+[ext_resource type="Texture2D" uid="uid://cixhinglv2iwe" path="res://assets/button3.aseprite" id="3_ypy5n"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tquqi"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56x8a")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_56x8a")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_uuted")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_ypy5n")
+}],
+"loop": true,
+"name": &"pressed",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_r34lm"]
+size = Vector2(20, 16)
+
+[node name="Button" type="Area2D"]
+collision_layer = 130
+collision_mask = 130
+script = ExtResource("1_ou57d")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(0, -6)
+sprite_frames = SubResource("SpriteFrames_tquqi")
+animation = &"pressed"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -8)
+shape = SubResource("RectangleShape2D_r34lm")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]

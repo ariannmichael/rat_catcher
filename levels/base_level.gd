@@ -1,4 +1,4 @@
-extends Node
+class_name BaseLevel extends Node
 
 signal rats_total_changed
 
@@ -21,6 +21,11 @@ func _process(_delta: float) -> void:
 
 func register_player(player: CharacterBody2D) -> void:
 	current_player_node = player
+
+
+func rat_catched() -> void:
+	collected_rats += 1
+	rats_total_changed.emit(total_rats, collected_rats)
 	
 
 func total_rats_changed(new_total: int) -> void:

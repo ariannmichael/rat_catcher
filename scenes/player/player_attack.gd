@@ -6,8 +6,8 @@ class_name PlayerAttack extends State
 @onready var animated_sprite_2d: AnimatedSprite2D = $"../../AnimatedSprite2D"
 @onready var attack_animation_player: AnimationPlayer = $"../../AnimatedSprite2D/AttackEffectSprite/AttackAnimationPlayer"
 @onready var attack_effect_sprite: Sprite2D = $"../../AnimatedSprite2D/AttackEffectSprite"
-@onready var hit_collision: CollisionShape2D = $"../../HitBox/CollisionShape2D"
-
+@onready var catch_collision: CollisionShape2D = $"../../CatchBox/CollisionShape2D"
+@onready var hazard_collision: CollisionShape2D = $"../../HazardArea/CollisionShape2D"
 
 
 var attacking := false
@@ -18,12 +18,14 @@ func enter() -> void:
 	attack_animation_player.play("attack_" + player.anim_direction())
 
 	attacking = true
-	hit_collision.set_deferred("disabled", false)
+	hazard_collision.set_deferred("disabled", true)
+	catch_collision.set_deferred("disabled", false)
 
 
 func exit() -> void:
 	attacking = false
-	hit_collision.set_deferred("disabled", true)
+	hazard_collision.set_deferred("disabled", false)
+	catch_collision.set_deferred("disabled", true)
 
 
 func update(_delta: float) -> void:
@@ -38,4 +40,5 @@ func update(_delta: float) -> void:
 
 func _on_attack_animation_player_animation_finished(anim_name: StringName) -> void:
 	attacking = false
-	hit_collision.set_deferred("disabled", true)
+	hazard_collision.set_deferred("disabled", false)
+	catch_collision.set_deferred("disabled", true)

@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://byeavjy0vyj00"]
+
+[ext_resource type="Script" path="res://scenes/startup/startup.gd" id="1_pc0os"]
+[ext_resource type="Texture2D" uid="uid://d0jexrfxnm53n" path="res://assets/rat-logo.png" id="1_vl1fi"]
+[ext_resource type="FontFile" uid="uid://d3ubcvnwj0iif" path="res://resources/BitPotion_outline.ttf" id="2_603ab"]
+[ext_resource type="Theme" uid="uid://d1t28ef1ibn1h" path="res://resources/new_theme.tres" id="3_pk85j"]
+
+[sub_resource type="Gradient" id="Gradient_pd831"]
+offsets = PackedFloat32Array(0.996753, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_6xm33"]
+gradient = SubResource("Gradient_pd831")
+
+[node name="Startup" type="CanvasLayer"]
+script = ExtResource("1_pc0os")
+
+[node name="TextureRect2" type="TextureRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("GradientTexture1D_6xm33")
+
+[node name="Label" type="Label" parent="."]
+offset_left = 232.0
+offset_top = 60.0
+offset_right = 300.0
+offset_bottom = 86.0
+theme = ExtResource("3_pk85j")
+theme_override_font_sizes/font_size = 32
+text = "CATCHER"
+
+[node name="Label2" type="Label" parent="."]
+offset_left = 64.0
+offset_top = 60.0
+offset_right = 92.0
+offset_bottom = 86.0
+theme = ExtResource("3_pk85j")
+theme_override_font_sizes/font_size = 32
+text = "RAT"
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_vl1fi")
+stretch_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme = ExtResource("3_pk85j")
+theme_override_constants/h_separation = 0
+theme_override_fonts/font = ExtResource("2_603ab")
+theme_override_font_sizes/font_size = 32
+text = " Start "
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

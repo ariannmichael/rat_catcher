@@ -1,5 +1,7 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://d1t28ef1ibn1h"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://d1t28ef1ibn1h"]
 
+[ext_resource type="Texture2D" uid="uid://bntymq4cwmtew" path="res://assets/ui-tile.aseprite" id="1_23jeb"]
+[ext_resource type="Texture2D" uid="uid://qfgvrg5ppmqg" path="res://assets/ui-tile2.aseprite" id="1_qrumo"]
 [ext_resource type="FontFile" uid="uid://d3ubcvnwj0iif" path="res://resources/BitPotion_outline.ttf" id="1_tjnxb"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_enscl"]
@@ -35,29 +37,20 @@ expand_margin_top = 2.0
 expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_c56on"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.225, 0.225, 0.225, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_2vn2d"]
+texture = ExtResource("1_qrumo")
+texture_margin_left = 1.99462
+texture_margin_top = 1.93229
+texture_margin_right = 1.93229
+texture_margin_bottom = 1.99462
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g43bc"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_cfnk6"]
+texture = ExtResource("1_23jeb")
+texture_margin_left = 1.93229
+texture_margin_top = 2.05695
+texture_margin_right = 1.99462
+texture_margin_bottom = 1.80763
+region_rect = Rect2(0, 0, 16, 15.7974)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_6g5pw"]
 content_margin_left = 4.0
@@ -76,7 +69,7 @@ default_font = ExtResource("1_tjnxb")
 Button/colors/font_color = Color(0.875, 0.875, 0.875, 1)
 Button/colors/font_disabled_color = Color(0.875, 0.875, 0.875, 0.5)
 Button/colors/font_focus_color = Color(0.95, 0.95, 0.95, 1)
-Button/colors/font_hover_color = Color(0.95, 0.95, 0.95, 1)
+Button/colors/font_hover_color = Color(0, 0, 0, 1)
 Button/colors/font_hover_pressed_color = Color(1, 1, 1, 1)
 Button/colors/font_outline_color = Color(0, 0, 0, 1)
 Button/colors/font_pressed_color = Color(1, 1, 1, 1)
@@ -93,6 +86,6 @@ Button/constants/outline_size = 0
 Button/font_sizes/font_size = 16
 Button/styles/disabled = SubResource("StyleBoxFlat_enscl")
 Button/styles/focus = SubResource("StyleBoxFlat_uomuu")
-Button/styles/hover = SubResource("StyleBoxFlat_c56on")
-Button/styles/normal = SubResource("StyleBoxFlat_g43bc")
+Button/styles/hover = SubResource("StyleBoxTexture_2vn2d")
+Button/styles/normal = SubResource("StyleBoxTexture_cfnk6")
 Button/styles/pressed = SubResource("StyleBoxFlat_6g5pw")

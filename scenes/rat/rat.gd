@@ -3,6 +3,9 @@ class_name Rat extends CharacterBody2D
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
+func _ready() -> void:
+	$CatchBox.connect("area_entered", _on_catch_box_entered)
+
 func _physics_process(_delta: float) -> void:
 	move_and_slide()
 	
@@ -13,5 +16,15 @@ func _physics_process(_delta: float) -> void:
 		
 
 
-func _on_hurt_box_area_entered(area: Area2D) -> void:
-	pass # Replace with function body.
+func _on_catch_box_entered(area: Area2D) -> void:
+	$AnimationPlayer.play("pickup")
+	call_deferred("disable_pickup")
+	var base_level = get_tree().get_first_node_in_group("base_level")
+	if base_level == null:
+		return
+	
+	base_level.rat_catched()
+
+
+func disable_pickup():
+	$CatchBox/CollisionShape2D.disabled = true

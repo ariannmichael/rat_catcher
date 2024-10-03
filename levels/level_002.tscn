@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://xtv10vi0kqv7"]
+[gd_scene load_steps=3 format=3 uid="uid://xtv10vi0kqv7"]
 
 [ext_resource type="PackedScene" uid="uid://dix800khrwvi4" path="res://levels/base_level.tscn" id="1_na7gl"]
+[ext_resource type="PackedScene" uid="uid://25e270pyju1d" path="res://scenes/button/button.tscn" id="2_kh3no"]
 
 [node name="Level002" instance=ExtResource("1_na7gl")]
 
@@ -9,3 +10,6 @@ position = Vector2(114, 28)
 
 [node name="NextLevelArea" parent="." index="4"]
 visible = false
+
+[node name="Button" parent="." index="10" instance=ExtResource("2_kh3no")]
+position = Vector2(69, 75)

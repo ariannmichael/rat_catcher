@@ -587,7 +587,7 @@ size = Vector2(16, 7)
 
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
-collision_mask = 264
+collision_mask = 392
 script = ExtResource("1_1r1j1")
 
 [node name="Camera2D" type="Camera2D" parent="."]
@@ -633,6 +633,7 @@ collision_layer = 0
 collision_mask = 20
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
+z_index = 24
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_p44ak")
 
@@ -644,6 +645,17 @@ collision_mask = 1536
 position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_phmld")
 debug_color = Color(0.720103, 0.309434, 0.912944, 0.42)
+
+[node name="CatchBox" type="Area2D" parent="."]
+position = Vector2(0, 1)
+collision_layer = 66
+collision_mask = 68
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBox"]
+position = Vector2(0, 3.5)
+shape = SubResource("RectangleShape2D_kuvy0")
+disabled = true
+debug_color = Color(0.96945, 0.346349, 0.165383, 0.419608)
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_wnlv0")
@@ -661,15 +673,6 @@ player = NodePath("../..")
 script = ExtResource("12_r542h")
 player = NodePath("../..")
 
-[node name="HitBox" type="Area2D" parent="."]
-collision_layer = 2
-collision_mask = 4
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(0, 3.5)
-shape = SubResource("RectangleShape2D_kuvy0")
-disabled = true
-debug_color = Color(0.96945, 0.346349, 0.165383, 0.419608)
-
 [connection signal="animation_finished" from="AnimatedSprite2D/AttackEffectSprite/AttackAnimationPlayer" to="StateMachine/Attack" method="_on_attack_animation_player_animation_finished"]
 [connection signal="area_entered" from="HazardArea" to="." method="_on_hazard_area_area_entered"]
+[connection signal="area_entered" from="CatchBox" to="StateMachine/Attack" method="_on_catch_box_area_entered"]
