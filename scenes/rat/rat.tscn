@@ -89,8 +89,8 @@ _data = {
 }
 
 [node name="Rat" type="CharacterBody2D" groups=["Rat"]]
-collision_layer = 4
-collision_mask = 12
+collision_layer = 20
+collision_mask = 8
 script = ExtResource("1_sf5mc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

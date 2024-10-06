@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bdah1j0tp47ai"]
+[gd_scene load_steps=30 format=3 uid="uid://bdah1j0tp47ai"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1r1j1"]
 [ext_resource type="Texture2D" uid="uid://b3dcb00i32yma" path="res://assets/character_down.aseprite" id="1_ylyqg"]
@@ -585,6 +585,10 @@ radius = 7.0
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kuvy0"]
 size = Vector2(16, 7)
 
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_3e3mi"]
+radius = 5.0
+height = 23.0
+
 [node name="Player" type="CharacterBody2D" groups=["Player"]]
 collision_layer = 2
 collision_mask = 392
@@ -628,9 +632,9 @@ flip_v = true
 position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_b4dnd")
 
-[node name="HazardArea" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 20
+[node name="HazardArea" type="Area2D" parent="." groups=["Player"]]
+collision_layer = 16
+collision_mask = 16
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HazardArea"]
 z_index = 24
@@ -638,8 +642,8 @@ position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_p44ak")
 
 [node name="LevelArea" type="Area2D" parent="."]
-collision_layer = 1536
-collision_mask = 1536
+collision_layer = 1664
+collision_mask = 1664
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LevelArea"]
 position = Vector2(0, -6)
@@ -656,6 +660,28 @@ position = Vector2(0, 3.5)
 shape = SubResource("RectangleShape2D_kuvy0")
 disabled = true
 debug_color = Color(0.96945, 0.346349, 0.165383, 0.419608)
+
+[node name="Catch_Right" type="Marker2D" parent="."]
+position = Vector2(14, -6)
+rotation = 1.5708
+
+[node name="Catch_Left" type="Marker2D" parent="."]
+position = Vector2(-14, -6)
+rotation = 4.71239
+
+[node name="Catch_Up" type="Marker2D" parent="."]
+position = Vector2(0, -23)
+
+[node name="Catch_Down" type="Marker2D" parent="."]
+position = Vector2(0, 4)
+
+[node name="PushArea" type="Area2D" parent="."]
+collision_layer = 256
+collision_mask = 256
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PushArea"]
+position = Vector2(0, -6.5)
+shape = SubResource("CapsuleShape2D_3e3mi")
 
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("7_wnlv0")
@@ -676,3 +702,5 @@ player = NodePath("../..")
 [connection signal="animation_finished" from="AnimatedSprite2D/AttackEffectSprite/AttackAnimationPlayer" to="StateMachine/Attack" method="_on_attack_animation_player_animation_finished"]
 [connection signal="area_entered" from="HazardArea" to="." method="_on_hazard_area_area_entered"]
 [connection signal="area_entered" from="CatchBox" to="StateMachine/Attack" method="_on_catch_box_area_entered"]
+[connection signal="body_entered" from="PushArea" to="." method="_on_push_area_body_entered"]
+[connection signal="body_exited" from="PushArea" to="." method="_on_push_area_body_exited"]

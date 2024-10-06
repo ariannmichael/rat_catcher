@@ -7,7 +7,7 @@ signal died
 
 var direction := Vector2.DOWN
 var input := Vector2.ZERO
-
+var pushable_object: RigidBody2D = null
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(_delta: float) -> void:
@@ -55,4 +55,4 @@ func anim_direction() -> String:
 
 
 func _on_hazard_area_area_entered(_area: Area2D) -> void:
-	pass
+	pass	

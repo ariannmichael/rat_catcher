@@ -13,11 +13,7 @@ var collected_rats := 0
 func _ready() -> void:
 	spawn_position = $Player.global_position
 	total_rats_changed(get_tree().get_nodes_in_group("Rat").size())
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(_delta: float) -> void:
-	pass
-
+	
 
 func register_player(player: CharacterBody2D) -> void:
 	current_player_node = player

@@ -16,7 +16,7 @@ func _physics_process(_delta: float) -> void:
 		
 
 
-func _on_catch_box_entered(area: Area2D) -> void:
+func _on_catch_box_entered(_area: Area2D) -> void:
 	$AnimationPlayer.play("pickup")
 	call_deferred("disable_pickup")
 	var base_level = get_tree().get_first_node_in_group("base_level")

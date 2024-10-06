@@ -14,7 +14,6 @@ func change_level(level_index: int) -> void:
 	
 
 func increment_level() -> void:
-	print("Increment Level")
 	change_level(current_index_level + 1)
 
 

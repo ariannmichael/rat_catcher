@@ -1,18 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://xdhqr14ulu2l"]
+[gd_scene load_steps=4 format=3 uid="uid://xdhqr14ulu2l"]
 
 [ext_resource type="Texture2D" uid="uid://uwewjqogt73b" path="res://assets/log.aseprite" id="1_ojgge"]
+[ext_resource type="Script" path="res://scenes/log/log.gd" id="1_pb16w"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_w5gfq"]
-radius = 5.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4a4qv"]
+size = Vector2(12, 15)
 
-[node name="Log" type="StaticBody2D"]
-collision_layer = 8
-collision_mask = 8
+[node name="Log" type="RigidBody2D" groups=["Pushable"]]
+collision_layer = 264
+collision_mask = 264
+gravity_scale = 0.0
+angular_damp = 10000.0
+script = ExtResource("1_pb16w")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -8)
 texture = ExtResource("1_ojgge")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -5)
-shape = SubResource("CircleShape2D_w5gfq")
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_4a4qv")

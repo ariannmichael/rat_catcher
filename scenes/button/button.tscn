@@ -11,7 +11,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("1_56x8a")
 }],
-"loop": true,
+"loop": false,
 "name": &"idle",
 "speed": 5.0
 }, {
@@ -25,7 +25,7 @@ animations = [{
 "duration": 1.0,
 "texture": ExtResource("3_ypy5n")
 }],
-"loop": true,
+"loop": false,
 "name": &"pressed",
 "speed": 5.0
 }]
@@ -34,14 +34,14 @@ animations = [{
 size = Vector2(20, 16)
 
 [node name="Button" type="Area2D"]
-collision_layer = 130
-collision_mask = 130
+collision_layer = 128
+collision_mask = 128
 script = ExtResource("1_ou57d")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -6)
 sprite_frames = SubResource("SpriteFrames_tquqi")
-animation = &"pressed"
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
