@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://d4ai77sk0elpc"]
+
+[ext_resource type="Texture2D" uid="uid://bhviodh0lgqgd" path="res://assets/heart.aseprite" id="1_tkb7u"]
+
+[node name="LifeIcon" type="TextureRect"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("1_tkb7u")

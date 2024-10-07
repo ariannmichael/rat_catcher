@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://xtv10vi0kqv7"]
+[gd_scene load_steps=6 format=4 uid="uid://xtv10vi0kqv7"]
 
 [ext_resource type="PackedScene" uid="uid://dix800khrwvi4" path="res://levels/base_level.tscn" id="1_na7gl"]
 [ext_resource type="PackedScene" uid="uid://d33xxra43oa7f" path="res://scenes/hole/hole.tscn" id="2_0n4ax"]
@@ -11,10 +11,10 @@
 [node name="Player" parent="." index="1"]
 position = Vector2(114, 28)
 
-[node name="BackLevelArea" parent="." index="3"]
-position = Vector2(172, 28)
+[node name="Ground" parent="." index="2"]
+tile_map_data = PackedByteArray("AAAPAAMAAQADAAMAAAAPAAIAAQADAAAAAAAOAAMAAQAAAAMAAAAOAAIAAQAAAAAAAAACAAkAAQADAAMAAAACAAgAAQADAAAAAAABAAkAAQAAAAMAAAABAAgAAQAAAAAAAAAPAAkAAQADAAMAAAAPAAgAAQADAAAAAAAOAAkAAQAAAAMAAAAOAAgAAQAAAAAAAAADAAIAAQADAAMAAAADAAEAAQADAAAAAAACAAIAAQAAAAMAAAACAAEAAQAAAAAAAAA=")
 
-[node name="NextLevelArea" parent="." index="4"]
+[node name="NextLevelArea" parent="." index="3"]
 position = Vector2(159, 185)
 
 [node name="Rat" parent="Rats" index="0" instance=ExtResource("2_tf2gt")]
@@ -29,7 +29,7 @@ position = Vector2(83, 108)
 [node name="Rat4" parent="Rats" index="3" instance=ExtResource("2_tf2gt")]
 position = Vector2(264, 177)
 
-[node name="Holes" parent="." index="7"]
+[node name="Holes" parent="." index="6"]
 z_index = -1
 
 [node name="Hole" parent="Holes" index="0" instance=ExtResource("2_0n4ax")]

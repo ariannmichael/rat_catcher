@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://de7gv0w742j5s"]
+[gd_scene load_steps=13 format=3 uid="uid://de7gv0w742j5s"]
 
 [ext_resource type="Texture2D" uid="uid://b7xcy52ollhp0" path="res://assets/rat.aseprite" id="1_75inf"]
 [ext_resource type="Script" path="res://scenes/rat/rat.gd" id="1_sf5mc"]
@@ -9,6 +9,9 @@
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_wcvtu"]
 radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rooqf"]
+radius = 6.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4se2b"]
 radius = 8.0
@@ -90,7 +93,7 @@ _data = {
 
 [node name="Rat" type="CharacterBody2D" groups=["Rat"]]
 collision_layer = 20
-collision_mask = 8
+collision_mask = 10
 script = ExtResource("1_sf5mc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -106,10 +109,19 @@ texture = ExtResource("3_ih58d")
 position = Vector2(0, -2)
 shape = SubResource("CircleShape2D_wcvtu")
 
+[node name="HazardBox" type="Area2D" parent="." groups=["Hazard"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_rooqf")
+debug_color = Color(0.336516, 0.62206, 0, 0.42)
+
 [node name="CatchBox" type="Area2D" parent="."]
 position = Vector2(0, -4)
-collision_layer = 5
-collision_mask = 65
+collision_layer = 66
+collision_mask = 66
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBox"]
 position = Vector2(-1, 0)

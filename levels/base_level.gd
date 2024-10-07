@@ -1,6 +1,7 @@
 class_name BaseLevel extends Node
 
 signal rats_total_changed
+signal on_player_life_changed(life: int)
 
 var player_scene: PackedScene = preload("res://scenes/player/player.tscn")
 
@@ -27,3 +28,7 @@ func rat_catched() -> void:
 func total_rats_changed(new_total: int) -> void:
 	total_rats = new_total
 	emit_signal("rats_total_changed", total_rats, collected_rats)
+
+
+func update_lives(lives: int) -> void:
+	emit_signal("on_player_life_changed", lives)

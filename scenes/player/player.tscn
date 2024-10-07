@@ -650,7 +650,7 @@ position = Vector2(0, -6)
 shape = SubResource("CircleShape2D_phmld")
 debug_color = Color(0.720103, 0.309434, 0.912944, 0.42)
 
-[node name="CatchBox" type="Area2D" parent="."]
+[node name="CatchBox" type="Area2D" parent="." groups=["Player"]]
 position = Vector2(0, 1)
 collision_layer = 66
 collision_mask = 68

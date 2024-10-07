@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cggbqlvmk24b"]
+[gd_scene load_steps=6 format=3 uid="uid://cggbqlvmk24b"]
 
 [ext_resource type="Texture2D" uid="uid://b7xcy52ollhp0" path="res://assets/rat.aseprite" id="1_k8qcd"]
 [ext_resource type="Script" path="res://levels/level_ui.gd" id="1_tj1gr"]
 [ext_resource type="Theme" uid="uid://d1t28ef1ibn1h" path="res://resources/new_theme.tres" id="2_vgk00"]
 [ext_resource type="FontFile" uid="uid://d3ubcvnwj0iif" path="res://resources/BitPotion_outline.ttf" id="3_pixsq"]
+[ext_resource type="PackedScene" uid="uid://d4ai77sk0elpc" path="res://scenes/life_icon/life_icon.tscn" id="5_plw2n"]
 
 [node name="LevelUI" type="CanvasLayer"]
 script = ExtResource("1_tj1gr")
@@ -17,13 +18,14 @@ grow_vertical = 2
 theme = ExtResource("2_vgk00")
 theme_override_constants/margin_left = 9
 theme_override_constants/margin_top = 9
+theme_override_constants/margin_right = 9
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+[node name="CounterContainer" type="HBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer/HBoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/CounterContainer"]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -31,10 +33,18 @@ size_flags_vertical = 4
 texture = ExtResource("1_k8qcd")
 expand_mode = 1
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/CounterContainer"]
 layout_mode = 2
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 3
 theme_override_fonts/font = ExtResource("3_pixsq")
 text = "0/0
 "
+
+[node name="LifeContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+
+[node name="LifeIcon" parent="MarginContainer/LifeContainer" instance=ExtResource("5_plw2n")]
+layout_mode = 2

@@ -33,7 +33,7 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r34lm"]
 size = Vector2(20, 16)
 
-[node name="Button" type="Area2D"]
+[node name="Button" type="Area2D" groups=["Button"]]
 collision_layer = 128
 collision_mask = 128
 script = ExtResource("1_ou57d")

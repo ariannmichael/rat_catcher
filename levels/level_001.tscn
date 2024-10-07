@@ -8,15 +8,12 @@
 [node name="Level001" instance=ExtResource("1_hk86p")]
 
 [node name="Player" parent="." index="1"]
-position = Vector2(127, 87)
+position = Vector2(127, 184)
 
 [node name="Ground" parent="." index="2"]
 tile_map_data = PackedByteArray("AAADAAQAAQADAAMAAAADAAMAAQADAAAAAAAPAAIAAQADAAMAAAAPAAEAAQADAAAAAAAOAAIAAQAAAAMAAAAOAAEAAQAAAAAAAAAMAAgAAQADAAMAAAAMAAcAAQADAAAAAAALAAgAAQAAAAMAAAALAAcAAQAAAAAAAAACAAQAAQAAAAMAAAACAAMAAQAAAAAAAAA=")
 
-[node name="BackLevelArea" parent="." index="3"]
-visible = false
-
-[node name="NextLevelArea" parent="." index="4"]
+[node name="NextLevelArea" parent="." index="3"]
 position = Vector2(135, 22)
 
 [node name="Rat" parent="Rats" index="0" instance=ExtResource("2_wl846")]
