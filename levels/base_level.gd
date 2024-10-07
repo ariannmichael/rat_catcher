@@ -1,6 +1,7 @@
 class_name BaseLevel extends Node
 
 signal rats_total_changed
+signal all_rats_collected
 signal on_player_life_changed(life: int)
 
 var player_scene: PackedScene = preload("res://scenes/player/player.tscn")
@@ -14,6 +15,9 @@ var collected_rats := 0
 func _ready() -> void:
 	spawn_position = $Player.global_position
 	total_rats_changed(get_tree().get_nodes_in_group("Rat").size())
+	var player = get_tree().get_first_node_in_group("Player")
+	if player:
+		player.connect("died", _on_player_died)
 	
 
 func register_player(player: CharacterBody2D) -> void:
@@ -24,6 +28,9 @@ func rat_catched() -> void:
 	collected_rats += 1
 	rats_total_changed.emit(total_rats, collected_rats)
 	
+	if collected_rats == total_rats:
+		all_rats_collected.emit()
+	
 
 func total_rats_changed(new_total: int) -> void:
 	total_rats = new_total
@@ -32,3 +39,7 @@ func total_rats_changed(new_total: int) -> void:
 
 func update_lives(lives: int) -> void:
 	emit_signal("on_player_life_changed", lives)
+
+
+func _on_player_died() -> void:
+	$"/root/LevelManager".gameover_scene()

@@ -20,6 +20,7 @@ func _on_catch_box_entered(_area: Area2D) -> void:
 	if _area.is_in_group("Player"):
 		$AnimationPlayer.play("pickup")
 		call_deferred("disable_pickup")
+		call_deferred("disable_hazard")
 		var base_level = get_tree().get_first_node_in_group("base_level")
 		if base_level == null:
 			return
@@ -27,5 +28,9 @@ func _on_catch_box_entered(_area: Area2D) -> void:
 		base_level.rat_catched()
 
 
-func disable_pickup():
+func disable_pickup() -> void:
 	$CatchBox/CollisionShape2D.disabled = true
+
+
+func disable_hazard() -> void:
+	$HazardBox/CollisionShape2D.disabled = true

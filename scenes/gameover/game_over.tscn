@@ -1,0 +1,47 @@
+[gd_scene load_steps=6 format=3 uid="uid://b2dwm0kyu650c"]
+
+[ext_resource type="Script" path="res://scenes/gameover/game_over.gd" id="1_35yps"]
+[ext_resource type="Texture2D" uid="uid://cdtw6fvag1ohn" path="res://assets/game-over.aseprite" id="1_xtfce"]
+[ext_resource type="Theme" uid="uid://d1t28ef1ibn1h" path="res://resources/new_theme.tres" id="2_2lyxr"]
+
+[sub_resource type="Gradient" id="Gradient_ippht"]
+offsets = PackedFloat32Array(0.996753, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_m7v0e"]
+gradient = SubResource("Gradient_ippht")
+
+[node name="GameOver" type="CanvasLayer"]
+script = ExtResource("1_35yps")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 320.0
+offset_bottom = 180.0
+texture = SubResource("GradientTexture1D_m7v0e")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture = ExtResource("1_xtfce")
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme = ExtResource("2_2lyxr")
+theme_override_font_sizes/font_size = 32
+text = " Restart "
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Button" to="." method="_on_button_pressed"]

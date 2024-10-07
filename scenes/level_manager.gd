@@ -7,9 +7,9 @@ var current_index_level := 0
 
 func change_level(level_index: int) -> void:
 	current_index_level = level_index
-	if current_index_level >= level_scenes.size() or current_index_level <= 0:
+	if current_index_level >= level_scenes.size():
 		current_index_level = 0
-	
+		
 	call_deferred("update_scene")
 	
 
@@ -23,3 +23,7 @@ func decrement_level() -> void:
 
 func update_scene() -> void:
 	get_tree().change_scene_to_packed(level_scenes[current_index_level])
+
+
+func gameover_scene() -> void:
+	change_level(-1)

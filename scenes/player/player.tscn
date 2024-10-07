@@ -577,7 +577,7 @@ _data = {
 radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_p44ak"]
-radius = 6.0
+radius = 5.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_phmld"]
 radius = 7.0
@@ -633,6 +633,7 @@ position = Vector2(0, -3)
 shape = SubResource("CircleShape2D_b4dnd")
 
 [node name="HazardArea" type="Area2D" parent="." groups=["Player"]]
+z_index = 1000
 collision_layer = 16
 collision_mask = 16
 
@@ -640,6 +641,7 @@ collision_mask = 16
 z_index = 24
 position = Vector2(0, -4)
 shape = SubResource("CircleShape2D_p44ak")
+debug_color = Color(0.990189, 0, 0.28141, 0.42)
 
 [node name="LevelArea" type="Area2D" parent="."]
 collision_layer = 1664
