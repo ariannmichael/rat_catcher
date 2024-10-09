@@ -31,4 +31,5 @@ func gameover_scene() -> void:
 
 
 func the_end() -> void:
+	$Music.stop()
 	change_level(0)
