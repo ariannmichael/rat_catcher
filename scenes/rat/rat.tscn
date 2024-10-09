@@ -11,10 +11,10 @@
 radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_rooqf"]
-radius = 6.0
+radius = 4.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4se2b"]
-radius = 8.0
+radius = 6.0
 
 [sub_resource type="Animation" id="Animation_yevmi"]
 length = 0.001
@@ -171,6 +171,15 @@ position = Vector2(-1, 0)
 shape = SubResource("CircleShape2D_4se2b")
 debug_color = Color(0.969022, 0.219493, 0.375381, 0.42)
 
+[node name="CollisionBox" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox"]
+position = Vector2(-1, -4)
+shape = SubResource("CircleShape2D_4se2b")
+debug_color = Color(0.593081, 0.595148, 0.600797, 0.42)
+
 [node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
 script = ExtResource("3_5ywke")
 initial_state = NodePath("Wander")
@@ -188,3 +197,5 @@ libraries = {
 "": SubResource("AnimationLibrary_xjsmt")
 }
 autoplay = "idle"
+
+[connection signal="area_entered" from="CollisionBox" to="StateMachine/Follow" method="_on_collision_box_area_entered"]

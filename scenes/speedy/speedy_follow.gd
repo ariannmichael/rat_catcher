@@ -1,9 +1,9 @@
-class_name RatFollow extends State
+class_name SpeedyFollow extends State
 
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
-@export var enemy: Rat
-@export var move_speed := 10.0
-@export var push_back_force: float = 30.0
+@export var enemy: Speedy
+@export var move_speed := 200.0
+@export var push_back_force: float = 60.0
 
 var player: Player
 var direction: Vector2
@@ -20,7 +20,7 @@ func physics_update(_delta) -> void:
 	direction = player.global_position - enemy.global_position
 	
 	if direction.length() > 10:
-		enemy.velocity = direction.normalized() * move_speed
+		enemy.velocity = direction.normalized() * move_speed * -1
 	else:
 		enemy.velocity = Vector2()
 	

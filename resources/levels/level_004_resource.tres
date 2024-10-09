@@ -4,5 +4,5 @@
 
 [resource]
 script = ExtResource("1_rtpq3")
-total_rats = 6
+total_rats = 5
 collected_rats = 0

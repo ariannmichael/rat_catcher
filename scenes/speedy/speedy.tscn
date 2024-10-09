@@ -1,7 +1,202 @@
-[gd_scene format=3 uid="uid://dad5ucewmiaj7"]
+[gd_scene load_steps=14 format=3 uid="uid://demv3t2ac8ojv"]
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[ext_resource type="Texture2D" uid="uid://dsieqaswyb1lv" path="res://assets/rat_speedy.aseprite" id="1_5kowu"]
+[ext_resource type="Script" path="res://scenes/speedy/speedy.gd" id="1_lh13y"]
+[ext_resource type="Texture2D" uid="uid://bawny6b3mi5vg" path="res://assets/shadown.aseprite" id="3_x534f"]
+[ext_resource type="Script" path="res://scripts/state_machine.gd" id="4_kygst"]
+[ext_resource type="Script" path="res://scenes/speedy/speedy_wander.gd" id="5_up00k"]
+[ext_resource type="Script" path="res://scenes/speedy/speedy_follow.gd" id="6_06oup"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_wcvtu"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rooqf"]
+radius = 4.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4se2b"]
+radius = 6.0
+
+[sub_resource type="Animation" id="Animation_yevmi"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -8)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_hpu37"]
+resource_name = "idle"
+length = 0.4
+loop_mode = 2
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.349066, -0.349066]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -10)]
+}
+
+[sub_resource type="Animation" id="Animation_nway4"]
+resource_name = "pickup"
+length = 0.4
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 3.4822, 2.63902, 3.4822),
+"update": 0,
+"values": [Vector2(0, -8), Vector2(0, -10), Vector2(0, -12), Vector2(0, -16), Vector2(0, -18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4),
+"transitions": PackedFloat32Array(1, 1, 3.03143, 2.46229, 2.82843),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(0.8, 0.8), Vector2(0.6, 0.6), Vector2(0.4, 0.4), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_xjsmt"]
+_data = {
+"RESET": SubResource("Animation_yevmi"),
+"idle": SubResource("Animation_hpu37"),
+"pickup": SubResource("Animation_nway4")
+}
+
+[node name="Speedy" type="CharacterBody2D" groups=["Rat"]]
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_lh13y")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -8)
+texture = ExtResource("1_5kowu")
+
+[node name="Shadow" type="Sprite2D" parent="Sprite2D"]
+show_behind_parent = true
+position = Vector2(-1, 8)
+texture = ExtResource("3_x534f")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("CircleShape2D_wcvtu")
+
+[node name="HazardBox" type="Area2D" parent="." groups=["Hazard"]]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HazardBox"]
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_rooqf")
+debug_color = Color(0.336516, 0.62206, 0, 0.42)
+
+[node name="CatchBox" type="Area2D" parent="."]
+position = Vector2(0, -4)
+collision_layer = 66
+collision_mask = 66
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CatchBox"]
+shape = SubResource("CircleShape2D_4se2b")
+debug_color = Color(0.969022, 0.219493, 0.375381, 0.42)
+
+[node name="CollisionBox" type="Area2D" parent="."]
+collision_layer = 10
+collision_mask = 10
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionBox"]
+z_index = -1
+position = Vector2(0, -4)
+shape = SubResource("CircleShape2D_4se2b")
+debug_color = Color(0.627344, 0.605357, 0.58644, 0.42)
+
+[node name="StateMachine" type="Node" parent="." node_paths=PackedStringArray("initial_state")]
+script = ExtResource("4_kygst")
+initial_state = NodePath("Wander")
+
+[node name="Wander" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_up00k")
+enemy = NodePath("../..")
+
+[node name="Follow" type="Node" parent="StateMachine" node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_06oup")
+enemy = NodePath("../..")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_xjsmt")
+}
+autoplay = "idle"
+
+[connection signal="area_entered" from="CollisionBox" to="StateMachine/Wander" method="_on_collision_box_area_entered"]
+[connection signal="area_entered" from="CollisionBox" to="StateMachine/Follow" method="_on_collision_box_area_entered"]
