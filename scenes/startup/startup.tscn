@@ -5,12 +5,12 @@
 [ext_resource type="FontFile" uid="uid://d3ubcvnwj0iif" path="res://resources/BitPotion_outline.ttf" id="2_603ab"]
 [ext_resource type="Theme" uid="uid://d1t28ef1ibn1h" path="res://resources/new_theme.tres" id="3_pk85j"]
 
-[sub_resource type="Gradient" id="Gradient_pd831"]
+[sub_resource type="Gradient" id="Gradient_t4rn1"]
 offsets = PackedFloat32Array(0.996753, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
 
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_6xm33"]
-gradient = SubResource("Gradient_pd831")
+gradient = SubResource("Gradient_t4rn1")
 
 [node name="Startup" type="CanvasLayer"]
 script = ExtResource("1_pc0os")

@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://du4h7xpyu125d"]
+[gd_scene load_steps=12 format=3 uid="uid://du4h7xpyu125d"]
 
 [ext_resource type="Script" path="res://scenes/level_manager.gd" id="1_nsrny"]
 [ext_resource type="PackedScene" uid="uid://bqcxw7vlxoycl" path="res://levels/level_001.tscn" id="2_4g3si"]
 [ext_resource type="PackedScene" uid="uid://byeavjy0vyj00" path="res://scenes/startup/startup.tscn" id="2_p2dfr"]
+[ext_resource type="PackedScene" uid="uid://8m1do4ey6a7d" path="res://levels/begin.tscn" id="3_47v27"]
 [ext_resource type="PackedScene" uid="uid://xtv10vi0kqv7" path="res://levels/level_002.tscn" id="3_u70ca"]
 [ext_resource type="PackedScene" uid="uid://bkfdv62n0oxkv" path="res://levels/level_003.tscn" id="5_up1lp"]
 [ext_resource type="PackedScene" uid="uid://b64368sxk4l3q" path="res://levels/level_004.tscn" id="6_4akku"]
@@ -13,7 +14,7 @@
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_nsrny")
-level_scenes = Array[PackedScene]([ExtResource("2_p2dfr"), ExtResource("2_4g3si"), ExtResource("3_u70ca"), ExtResource("6_4akku"), ExtResource("5_up1lp"), ExtResource("7_kh6x1"), ExtResource("6_bosw6")])
+level_scenes = Array[PackedScene]([ExtResource("2_p2dfr"), ExtResource("3_47v27"), ExtResource("2_4g3si"), ExtResource("3_u70ca"), ExtResource("6_4akku"), ExtResource("5_up1lp"), ExtResource("7_kh6x1"), ExtResource("6_bosw6")])
 
 [node name="Fall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_3kfsg")
