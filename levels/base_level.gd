@@ -42,6 +42,7 @@ func rat_catched() -> void:
 	rats_total_changed.emit(total_rats, collected_rats)
 	level_resource.collected_rats = collected_rats
 	if collected_rats == total_rats:
+		$AllCatched.play()
 		all_rats_collected.emit()
 	
 

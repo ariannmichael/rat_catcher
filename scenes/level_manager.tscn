@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://du4h7xpyu125d"]
+[gd_scene load_steps=11 format=3 uid="uid://du4h7xpyu125d"]
 
 [ext_resource type="Script" path="res://scenes/level_manager.gd" id="1_nsrny"]
 [ext_resource type="PackedScene" uid="uid://bqcxw7vlxoycl" path="res://levels/level_001.tscn" id="2_4g3si"]
@@ -9,10 +9,16 @@
 [ext_resource type="PackedScene" uid="uid://b2dwm0kyu650c" path="res://scenes/gameover/game_over.tscn" id="6_bosw6"]
 [ext_resource type="PackedScene" uid="uid://c48a1nksa2ndh" path="res://levels/level_005.tscn" id="7_kh6x1"]
 [ext_resource type="AudioStream" uid="uid://cyl1w1wfdic5d" path="res://assets/sounds/fall.wav" id="9_3kfsg"]
+[ext_resource type="AudioStream" uid="uid://ifskrqgcewth" path="res://assets/musics/Groovy.ogg" id="10_t6ym1"]
 
 [node name="LevelManager" type="Node"]
 script = ExtResource("1_nsrny")
-level_scenes = Array[PackedScene]([ExtResource("2_p2dfr"), ExtResource("2_4g3si"), ExtResource("3_u70ca"), ExtResource("5_up1lp"), ExtResource("6_4akku"), ExtResource("7_kh6x1"), ExtResource("6_bosw6")])
+level_scenes = Array[PackedScene]([ExtResource("2_p2dfr"), ExtResource("2_4g3si"), ExtResource("3_u70ca"), ExtResource("6_4akku"), ExtResource("5_up1lp"), ExtResource("7_kh6x1"), ExtResource("6_bosw6")])
 
 [node name="Fall" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("9_3kfsg")
+
+[node name="Music" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("10_t6ym1")
+volume_db = -8.0
+autoplay = true
