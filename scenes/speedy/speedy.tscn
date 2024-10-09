@@ -134,7 +134,7 @@ _data = {
 "pickup": SubResource("Animation_nway4")
 }
 
-[node name="Speedy" type="CharacterBody2D" groups=["Rat"]]
+[node name="Speedy" type="CharacterBody2D" groups=["Rat", "Speedy"]]
 collision_layer = 4
 collision_mask = 10
 script = ExtResource("1_lh13y")

@@ -6,7 +6,7 @@ signal died
 @export_range(1, 20, 0.5) var decelerate_speed := 5.0
 @export var life: int = 3
 @export var damage_invicibility_time: float = 2.0
-@export var push_back_force: float = 30.0
+@export var push_back_force: float = 20.0
 
 @onready var invicibility_timer: Timer = $InvicibilityTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -94,6 +94,8 @@ func damage() -> void:
 	
 	if life <= 0:
 		emit_signal("died")
+	else:
+		$Hurt.play()
 
 
 func push_back_player() -> void:

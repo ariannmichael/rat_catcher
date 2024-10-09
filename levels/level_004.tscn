@@ -13,7 +13,6 @@ level_resource = ExtResource("2_m23wn")
 position = Vector2(57, 53)
 
 [node name="NextLevelArea" parent="." index="3"]
-visible = true
 position = Vector2(272, 23)
 
 [node name="Rat" parent="Rats" index="0" instance=ExtResource("2_rpb7l")]

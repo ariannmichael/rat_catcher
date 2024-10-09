@@ -19,6 +19,7 @@ func increment_level() -> void:
 
 func decrement_level() -> void:
 	change_level(current_index_level - 1)
+	$Fall.play()
 
 
 func update_scene() -> void:
@@ -27,3 +28,7 @@ func update_scene() -> void:
 
 func gameover_scene() -> void:
 	change_level(-1)
+
+
+func the_end() -> void:
+	change_level(0)

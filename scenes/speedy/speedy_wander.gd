@@ -23,6 +23,8 @@ func physics_update(_delta: float) -> void:
 	if enemy:
 		enemy.velocity = move_direction * move_speed
 	
+	if !player:
+		return
 	var direction = player.global_position - enemy.global_position
 	
 	if direction.length() < 30:

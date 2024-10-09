@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://bdah1j0tp47ai"]
+[gd_scene load_steps=35 format=3 uid="uid://bdah1j0tp47ai"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1r1j1"]
 [ext_resource type="Texture2D" uid="uid://b3dcb00i32yma" path="res://assets/character_down.aseprite" id="1_ylyqg"]
@@ -17,6 +17,8 @@
 [ext_resource type="Texture2D" uid="uid://d1xuqilc4l25x" path="res://assets/character_side_walk2.aseprite" id="10_2467x"]
 [ext_resource type="Script" path="res://scenes/player/player_attack.gd" id="12_r542h"]
 [ext_resource type="Texture2D" uid="uid://c10i7gswfxywy" path="res://assets/net.aseprite" id="13_u8ret"]
+[ext_resource type="AudioStream" uid="uid://cpuquhhyesa30" path="res://assets/sounds/hurt.wav" id="18_mkua2"]
+[ext_resource type="AudioStream" uid="uid://c3onsvwfehn8a" path="res://assets/sounds/catch.wav" id="18_o3xnx"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5xhx1"]
 animations = [{
@@ -745,6 +747,13 @@ player = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_2cibw")
 }
+
+[node name="Catch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_o3xnx")
+volume_db = -8.0
+
+[node name="Hurt" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("18_mkua2")
 
 [connection signal="timeout" from="InvicibilityTimer" to="." method="_on_invicibility_timer_timeout"]
 [connection signal="animation_finished" from="AnimatedSprite2D/AttackEffectSprite/AttackAnimationPlayer" to="StateMachine/Attack" method="_on_attack_animation_player_animation_finished"]

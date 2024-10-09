@@ -1,5 +1,7 @@
 class_name Speedy extends CharacterBody2D
 
+signal boss_catched
+
 @onready var sprite_2d: Sprite2D = $Sprite2D
 
 
@@ -26,6 +28,7 @@ func _on_catch_box_entered(_area: Area2D) -> void:
 			return
 		
 		base_level.rat_catched()
+		emit_signal("boss_catched")
 
 
 func disable_pickup() -> void:

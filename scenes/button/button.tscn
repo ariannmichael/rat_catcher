@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://25e270pyju1d"]
+[gd_scene load_steps=8 format=3 uid="uid://25e270pyju1d"]
 
 [ext_resource type="Texture2D" uid="uid://vugqyu75vsot" path="res://assets/button.aseprite" id="1_56x8a"]
 [ext_resource type="Script" path="res://scenes/button/button.gd" id="1_ou57d"]
 [ext_resource type="Texture2D" uid="uid://uebxinr6fyld" path="res://assets/button2.aseprite" id="2_uuted"]
 [ext_resource type="Texture2D" uid="uid://cixhinglv2iwe" path="res://assets/button3.aseprite" id="3_ypy5n"]
+[ext_resource type="AudioStream" uid="uid://bh10v6d4xr0w1" path="res://assets/sounds/button.wav" id="5_ktvyk"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_tquqi"]
 animations = [{
@@ -46,5 +47,9 @@ animation = &"idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -8)
 shape = SubResource("RectangleShape2D_r34lm")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_ktvyk")
+volume_db = -4.0
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
