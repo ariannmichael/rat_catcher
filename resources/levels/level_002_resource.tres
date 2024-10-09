@@ -1,0 +1,8 @@
+[gd_resource type="Resource" script_class="LevelResource" load_steps=2 format=3 uid="uid://ccdy46glda03x"]
+
+[ext_resource type="Script" path="res://resources/level_resource.gd" id="1_cu6vt"]
+
+[resource]
+script = ExtResource("1_cu6vt")
+total_rats = 4
+collected_rats = 0

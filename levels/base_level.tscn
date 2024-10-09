@@ -1,13 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://dix800khrwvi4"]
+[gd_scene load_steps=8 format=3 uid="uid://dix800khrwvi4"]
 
 [ext_resource type="Script" path="res://levels/base_level.gd" id="1_dluau"]
 [ext_resource type="PackedScene" uid="uid://bdah1j0tp47ai" path="res://scenes/player/player.tscn" id="1_sjnyc"]
+[ext_resource type="Script" path="res://resources/level_resource.gd" id="2_553wg"]
 [ext_resource type="PackedScene" uid="uid://cln8nsvnvyajl" path="res://resources/ground.tscn" id="2_r2sse"]
 [ext_resource type="PackedScene" uid="uid://s7xjro4fnn2g" path="res://scenes/next_level/next_level_area.tscn" id="4_32ata"]
 [ext_resource type="PackedScene" uid="uid://cggbqlvmk24b" path="res://levels/level_ui.tscn" id="6_m515v"]
 
+[sub_resource type="Resource" id="Resource_6ij0m"]
+script = ExtResource("2_553wg")
+total_rats = 0
+collected_rats = 0
+
 [node name="BaseLevel" type="Node2D" groups=["base_level"]]
 script = ExtResource("1_dluau")
+level_resource = SubResource("Resource_6ij0m")
 
 [node name="LevelUI" parent="." instance=ExtResource("6_m515v")]
 

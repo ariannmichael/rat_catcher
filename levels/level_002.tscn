@@ -1,12 +1,14 @@
-[gd_scene load_steps=6 format=4 uid="uid://xtv10vi0kqv7"]
+[gd_scene load_steps=7 format=4 uid="uid://xtv10vi0kqv7"]
 
 [ext_resource type="PackedScene" uid="uid://dix800khrwvi4" path="res://levels/base_level.tscn" id="1_na7gl"]
 [ext_resource type="PackedScene" uid="uid://d33xxra43oa7f" path="res://scenes/hole/hole.tscn" id="2_0n4ax"]
 [ext_resource type="PackedScene" uid="uid://bum6r68qhslca" path="res://scenes/brick/brick.tscn" id="2_j0nhu"]
+[ext_resource type="Resource" uid="uid://ccdy46glda03x" path="res://resources/levels/level_002_resource.tres" id="2_qtgq7"]
 [ext_resource type="PackedScene" uid="uid://de7gv0w742j5s" path="res://scenes/rat/rat.tscn" id="2_tf2gt"]
 [ext_resource type="PackedScene" uid="uid://c1mcfa8j6etup" path="res://scenes/stone/stone.tscn" id="3_aumwt"]
 
 [node name="Level002" instance=ExtResource("1_na7gl")]
+level_resource = ExtResource("2_qtgq7")
 
 [node name="Player" parent="." index="1"]
 position = Vector2(114, 28)

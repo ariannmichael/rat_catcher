@@ -3,9 +3,14 @@ class_name Player extends CharacterBody2D
 @warning_ignore("unused_signal")
 signal died
 
-@export var life := 3
+@export_range(1, 20, 0.5) var decelerate_speed := 5.0
+@export var life: int = 3
+@export var damage_invicibility_time: float = 2.0
+@export var push_back_force: float = 30.0
 
+@onready var invicibility_timer: Timer = $InvicibilityTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 var direction := Vector2.DOWN
 var input := Vector2.ZERO
@@ -72,9 +77,29 @@ func _on_hazard_area_area_entered(_area: Area2D) -> void:
 	
 	if base_level == null:
 		return
+	
+	if !invicibility_timer.is_stopped():
+		return
 		
+	damage()
+	push_back_player()
+	
+
+
+func damage() -> void:
+	invicibility_timer.start(damage_invicibility_time)
+	animation_player.play("blink")
 	life -= 1
 	base_level.update_lives(life)
 	
 	if life <= 0:
 		emit_signal("died")
+
+
+func push_back_player() -> void:
+	self.global_position += direction * push_back_force * -1
+	self.velocity -= self.velocity * decelerate_speed
+	
+
+func _on_invicibility_timer_timeout() -> void:
+	animation_player.stop()

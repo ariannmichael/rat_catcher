@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scenes/hole/hole.gd" id="1_htpn2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_npff3"]
-size = Vector2(14, 14)
+size = Vector2(12, 12)
 
 [node name="Hole" type="Area2D"]
 position = Vector2(0, -8)
