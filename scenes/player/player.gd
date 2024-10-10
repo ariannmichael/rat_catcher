@@ -7,6 +7,7 @@ signal died
 @export var life: int = 3
 @export var damage_invicibility_time: float = 2.0
 @export var push_back_force: float = 20.0
+@export var player_resource: Resource
 
 @onready var invicibility_timer: Timer = $InvicibilityTimer
 @onready var sprite: AnimatedSprite2D = $AnimatedSprite2D
@@ -23,6 +24,9 @@ func _ready() -> void:
 	if base_level == null:
 		return
 	
+	if player_resource:
+		life = player_resource.health
+		
 	base_level.update_lives(life)
 
 
@@ -92,6 +96,8 @@ func damage() -> void:
 	life -= 1
 	base_level.update_lives(life)
 	
+	player_resource.health = life
+
 	if life <= 0:
 		emit_signal("died")
 	else:

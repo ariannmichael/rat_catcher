@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://bdah1j0tp47ai"]
+[gd_scene load_steps=36 format=3 uid="uid://bdah1j0tp47ai"]
 
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_1r1j1"]
 [ext_resource type="Texture2D" uid="uid://b3dcb00i32yma" path="res://assets/character_down.aseprite" id="1_ylyqg"]
+[ext_resource type="Resource" uid="uid://cblgx8g7xwqi0" path="res://resources/player/player_resource.tres" id="2_gq4sw"]
 [ext_resource type="Texture2D" uid="uid://x5cwq4mdtujh" path="res://assets/character_down_walk_1.aseprite" id="2_gtw6n"]
 [ext_resource type="Texture2D" uid="uid://bk5kdw8jthu1v" path="res://assets/character_side.aseprite" id="2_hqdl1"]
 [ext_resource type="Script" path="res://scenes/game_camera.gd" id="2_sfdv1"]
@@ -632,6 +633,7 @@ _data = {
 collision_layer = 2
 collision_mask = 392
 script = ExtResource("1_1r1j1")
+player_resource = ExtResource("2_gq4sw")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 script = ExtResource("2_sfdv1")
